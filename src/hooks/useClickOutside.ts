@@ -7,7 +7,11 @@ export default function useClickOutside(
   const flag = useRef(false);
 
   function handleClick(e: Event) {
-    if (ref.current && !ref.current.contains(e.target as Node)) {
+    if (
+      flag.current &&
+      ref.current &&
+      !ref.current.contains(e.target as Node)
+    ) {
       callback();
     }
   }
@@ -15,9 +19,7 @@ export default function useClickOutside(
   useEffect(() => {
     if (!flag.current) {
       flag.current = true;
-      setTimeout(() => {
-        document.addEventListener("click", handleClick);
-      }, 5);
+      document.addEventListener("click", handleClick);
     }
     return () => {
       document.removeEventListener("click", handleClick);

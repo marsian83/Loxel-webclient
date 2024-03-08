@@ -2,27 +2,25 @@ import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import PopupDrawerHolder from "./components/PopupDrawerHolder";
 import usePopoverDrawer from "../../hooks/usePopoverDrawer";
-import useClickOutside from "../../hooks/useClickOutside";
-
-const autoHideTimeout = 500;
 
 interface PopupDrawerProps {
   className?: string;
 }
 
 export default function PopupDrawer(props: PopupDrawerProps) {
-  const [hide, setHide] = useState(false);
-
-  const holderRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const [hide, setHide] = useState(true);
 
   const drawer = usePopoverDrawer();
-  useClickOutside(holderRef, () => setHide(true));
 
   useEffect(() => {
-    console.log(hide);
+    if (hide == true) {
+      drawer.hide();
+    }
   }, [hide]);
 
-  console.log(holderRef.current);
+  useEffect(() => {
+    if (drawer.element != null) setHide(false);
+  }, [drawer.element]);
 
   return (
     <div
@@ -31,14 +29,17 @@ export default function PopupDrawer(props: PopupDrawerProps) {
         drawer.element == null && "opacity-0 pointer-events-none",
         props.className
       )}
+      onMouseDown={() => {
+        setHide(true);
+      }}
     >
       <PopupDrawerHolder
         className={twMerge(
           "w-full duration-300",
-          hide && "pointer-events-none translate-y-full",
-          drawer.element == null && "translate-y-full scale-150"
+          hide && "translate-y-full opacity-0",
+          drawer.element == null && "translate-y-full"
         )}
-        ref={holderRef}
+        setHide={setHide}
       >
         {drawer.element}
       </PopupDrawerHolder>

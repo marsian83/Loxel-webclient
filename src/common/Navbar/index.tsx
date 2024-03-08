@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 import NavbarAction from "./components/NavbarAction";
 import NavbarSeperator from "./components/NavbarSeperator";
 import usePopoverDrawer from "../../hooks/usePopoverDrawer";
+import Forms from "../Forms";
 
 export default function Navbar() {
   const drawer = usePopoverDrawer();
 
   function getStartedAction() {
-    drawer.show(<div>asdasd lorem400</div>);
+    drawer.show(<Forms.OrganizationRegistration className="w-1/3" />);
   }
 
   return (

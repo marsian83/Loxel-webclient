@@ -1,8 +1,15 @@
 import { NavLink } from "react-router-dom";
 import NavbarAction from "./components/NavbarAction";
 import NavbarSeperator from "./components/NavbarSeperator";
+import usePopoverDrawer from "../../hooks/usePopoverDrawer";
 
 export default function Navbar() {
+  const drawer = usePopoverDrawer();
+
+  function getStartedAction() {
+    drawer.show(<div>asdasd lorem400</div>);
+  }
+
   return (
     <nav className="p-page py-5 flex justify-center items-center">
       <div className="flex-1">
@@ -18,8 +25,11 @@ export default function Navbar() {
       </div>
 
       <div className="flex-1 flex justify-end">
-        <button className="px-6 py-2 bg-primary text-back rounded-md font-medium">
-          Launch Dapp
+        <button
+          className="px-6 py-2 bg-primary text-back rounded-md font-medium"
+          onClick={getStartedAction}
+        >
+          Get Started
         </button>
       </div>
     </nav>

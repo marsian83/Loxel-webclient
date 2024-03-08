@@ -12,7 +12,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="p-page py-5 flex justify-center items-center">
+    <nav className="p-page py-5 flex justify-center items-center fixed w-full z-[10000] bg-background/30">
       <div className="flex-1">
         <img src="/brand.svg" className="h-10" />
       </div>

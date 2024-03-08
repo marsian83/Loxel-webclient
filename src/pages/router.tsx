@@ -7,12 +7,14 @@ import Layout from "../layout";
 
 import HomePage from "./HomePage";
 import ErrorPage from "./ErrorPage";
+import OrganizationDashboardPage from "./OrganizationDashboardPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<Layout.Default />}>
         <Route index element={<HomePage />} />
+        <Route path="/org/dashboard" element={<OrganizationDashboardPage />} />
       </Route>
 
       <Route path="*" element={<ErrorPage />} />

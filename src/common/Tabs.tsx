@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface TabsProps {
   tabs: Array<{ title: string }>;
+  onChange?: (selectedIndex: number) => void;
 }
 
 export default function Tabs(props: TabsProps) {
@@ -10,6 +11,10 @@ export default function Tabs(props: TabsProps) {
   const tabWidth = `calc((100% - 8px) / ${tabs.length})`;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    props.onChange && props.onChange(selectedIndex);
+  }, [selectedIndex]);
 
   return (
     <nav className="bg-foreground flex p-1 rounded-md relative">

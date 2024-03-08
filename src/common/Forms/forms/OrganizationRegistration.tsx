@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import DataForm from "../../DataForm";
 
@@ -9,6 +9,8 @@ interface OrganizationRegistrationProps {
 export default function OrganizationRegistration(
   props: OrganizationRegistrationProps
 ) {
+  const [imgUrl, setImgUrl] = useState("");
+
   return (
     <DataForm
       className={twMerge("flex flex-col items-stretch p-8", props.className)}
@@ -17,10 +19,27 @@ export default function OrganizationRegistration(
         Register Your Organization
       </h1>
 
+      <img
+        className="w-1/3 aspect-square self-center rounded-full object-cover outline outline-front/20 outline-offset-2 mt-6"
+        src={imgUrl}
+        onError={(e) =>
+          (e.currentTarget.src =
+            "https://www.coherentmarketinsights.com/images/testimg/defultlogo.jpg")
+        }
+      />
+
       <FormInput
         name="organizationName"
         placeholder="Organization Name"
         label="This is how you will be known on Loxel"
+        required
+      />
+
+      <FormInput
+        name="organizationImage"
+        placeholder="Image"
+        onChange={(e) => setImgUrl(e.target.value)}
+        label="Provide url to the display picture for your organization"
         required
       />
 

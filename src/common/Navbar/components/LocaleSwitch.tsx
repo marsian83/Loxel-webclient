@@ -6,7 +6,6 @@ import { locales } from "../../../config";
 
 export default function LocaleSwitch() {
   const { current, set: setLocale } = useLocale();
-
   const [showingOptions, setShowingOptions] = useState(false);
 
   return (
@@ -33,7 +32,7 @@ export default function LocaleSwitch() {
         {locales.map((loc, key) => (
           <button
             key={key}
-            className="px-4 py-2 flex gap-x-2 items-center border border-front/15 lowercase"
+            className="px-4 py-2 flex gap-x-2 items-center border border-front/15 lowercase duration-150 hover:bg-foreground"
             onClick={() => {
               setLocale(loc.locale);
               setShowingOptions(false);

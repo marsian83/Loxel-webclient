@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import NavbarAction from "./components/NavbarAction";
 import NavbarSeperator from "./components/NavbarSeperator";
 import usePopoverDrawer from "../../hooks/usePopoverDrawer";
 import Forms from "../Forms";
+import { useState } from "react";
 
 export default function Navbar() {
   const drawer = usePopoverDrawer();
@@ -12,9 +13,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="p-page py-5 flex justify-center items-center fixed w-full z-[10000] bg-background/30">
+    <nav className="p-page py-5 flex justify-center items-center fixed w-full z-[10000] bg-background/50 backdrop-blur-sm">
       <div className="flex-1">
-        <img src="/brand.svg" className="h-10" />
+        <Link to="/">
+          <img src="/brand.svg" className="h-10" />
+        </Link>
       </div>
 
       <div className="flex gap-x-5 items-center">

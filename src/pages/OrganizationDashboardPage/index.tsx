@@ -27,7 +27,7 @@ export default function OrganizationDashboardPage() {
           onChange={(idx) => setViewElement(tabs[idx].element)}
         />
 
-        {viewElement}
+        {viewElement || <div className="h-[50vh]" />}
       </section>
     </>
   );

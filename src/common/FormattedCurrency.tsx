@@ -2,7 +2,7 @@ import React from "react";
 import useLocale from "../hooks/useLocale";
 
 interface FormattedCurrencyProps {
-  amount: number;
+  usd: number;
   className?: string;
 }
 
@@ -15,6 +15,8 @@ export default function FormattedCurrency(props: FormattedCurrencyProps) {
   });
 
   return (
-    <span className={props.className}>{formatter.format(props.amount)}</span>
+    <span className={props.className}>
+      {formatter.format(props.usd * current.conversion)}
+    </span>
   );
 }

@@ -37,10 +37,9 @@ export default function UsersTable() {
       entry["Benifits Availed"] = (
         <div>
           <p>{user.claims.count} Benifits Claimed</p>
-          <p className="text-xs text-primary/50">
+          <p className="text-xs text-primary/60">
             {"("}
-            Worth
-            <FormattedCurrency amount={user.claims.amount} />
+            Worth <FormattedCurrency usd={user.claims.amount} />
             {")"}
           </p>
         </div>
@@ -96,21 +95,21 @@ export default function UsersTable() {
 
 function getPassesString(pass: { internal: number; external: number }): string {
   const { internal, external } = pass;
-  if (internal == 0) return `${internal} internal passes`;
-  if (external == 0) return `${external} passes (all external)`;
+  if (external == 0) return `${internal} internal passes`;
+  if (internal == 0) return `${external} passes (all external)`;
   return `${internal} internal + ${external} external`;
 }
 
 const dummyUsers = [
   {
     email: "spandan567@gmail.com",
-    passes: { internal: 5, external: 3 },
-    claims: { count: 8, amount: 650 },
+    passes: { internal: 13, external: 4 },
+    claims: { count: 13, amount: 1250 },
   },
   {
     email: "riya1jain567@gmail.com",
-    passes: { internal: 5, external: 3 },
-    claims: { count: 8, amount: 650 },
+    passes: { internal: 3, external: 0 },
+    claims: { count: 4, amount: 220 },
   },
   {
     email: "yashgo0018@gmail.com",
@@ -119,8 +118,8 @@ const dummyUsers = [
   },
   {
     email: "shreyashjambhulkar@gmail.com",
-    passes: { internal: 5, external: 3 },
-    claims: { count: 8, amount: 650 },
+    passes: { internal: 0, external: 3 },
+    claims: { count: 2, amount: 300 },
   },
   {
     email: "harharhar@gmail.com",

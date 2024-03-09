@@ -4,6 +4,7 @@ import NavbarSeperator from "./components/NavbarSeperator";
 import usePopoverDrawer from "../../hooks/usePopoverDrawer";
 import Forms from "../Forms";
 import { useState } from "react";
+import LocaleSwitch from "./components/LocaleSwitch";
 
 export default function Navbar() {
   const drawer = usePopoverDrawer();
@@ -28,7 +29,8 @@ export default function Navbar() {
         <NavbarAction type="link" title="Dapp" to="/dapp" />
       </div>
 
-      <div className="flex-1 flex justify-end">
+      <div className="flex-1 flex items-center gap-x-8 justify-end">
+        <LocaleSwitch />
         <button
           className="px-6 py-2 bg-primary text-back rounded-md font-medium"
           onClick={getStartedAction}
